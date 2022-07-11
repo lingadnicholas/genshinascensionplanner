@@ -1,6 +1,7 @@
+import PrimoForm from "../components/PrimoForm"
 function Primotracker() {
   return (
-    <div>Primotracker</div>
+    <PrimoForm />
   )
 }
 
