@@ -93,6 +93,20 @@ ul {
 .hidden { 
   display:none;
 }
+
+.primoTrackHeader {
+  display: flex; 
+  justify-content: space-between; 
+}
+
+.primoTrack {
+  display: flex;
+}
+.primoTrack ul {
+  width:100%;
+  display: flex; 
+  justify-content: space-between;
+}
 @media (max-width: 600px) {
   .form {
     width: 90%;

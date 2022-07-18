@@ -7,6 +7,10 @@ const primoTrackerSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    date: {
+      type: String, 
+      required: [true, 'Please add a date'],
+    },
     pulls: {
       type: Number,
       required: true,
@@ -28,6 +32,7 @@ module.exports = mongoose.model('PrimoTracker', primoTrackerSchema)
 {
     "user": "62cc6a7a7a5ff98b5ae07944",
     "pulls": 64,
+    "date": 
     "type": "inputted",
     "_id": "62cee4f7521028231ee0c200",
     "createdAt": "2022-07-13T15:29:59.757Z",

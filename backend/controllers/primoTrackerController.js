@@ -15,18 +15,19 @@ const getPrimos = asyncHandler(async (req, res) => {
 // @route   POST /api/primoTracker
 // @access  Private
 const setPrimo = asyncHandler(async (req, res) => {
-  if (!req.body.pulls || !req.body.type) {
+  if (!req.body.pulls || !req.body.type || !req.body.date) {
     res.status(400)
-    throw new Error('Missing pulls or type field')
+    throw new Error('Missing pulls or type field: date')
   }
 
 
   const primo = await PrimoTracker.create({
     user: req.user.id,
+    date: req.body.date,
     pulls: req.body.pulls,
-    type: req.body.type.toString()
+    type: req.body.type
   })
-
+  console.log("Created")
   res.status(200).json(primo)
 })
 

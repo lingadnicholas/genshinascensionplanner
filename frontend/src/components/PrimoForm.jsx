@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { toast } from 'react-toastify'
 import PrimoDisplay from './PrimoDisplay'
+import { createPrimo } from '../features/primos/primoSlice'
 function PrimoForm() {
     const [formData, setFormData] = useState({
         primogems: '', 
@@ -142,11 +143,16 @@ function PrimoForm() {
             ...prevState,
             finalPrimos: tempPrimos,
             finalPulls: Math.floor(tempPrimos/160) + pulls,
-            finalDate: `${tempDate.getMonth()-1}-${tempDate.getDate()}-${tempDate.getFullYear()}`,
+            finalDate: `${tempDate.getMonth()+1}-${tempDate.getDate()}-${tempDate.getFullYear()}`,
             isSubmitted:true
           }))
         // TODO: Submit 
-
+  
+          dispatch(createPrimo({
+            date: `${tempDate.getMonth()+1}-${tempDate.getDate()}-${tempDate.getFullYear()}`, 
+            pulls: Math.floor(tempPrimos/160) + pulls, 
+            type: 'predicted'
+        }))
         // Do not reset fields to allow for easy reuse
     }
 
